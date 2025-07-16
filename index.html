@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <title>Jacky Jacqueline ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: 'Comic Sans MS', cursive;
+    }
+
+    h1 {
+      color: white;
+      font-size: 2.5em;
+      text-align: center;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 20px;
+      font-size: 18px;
+      background-color: #ff6f91;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ff4f7b;
+    }
+
+    .heart {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: red;
+  transform: rotate(45deg);
+  animation: float 4s linear forwards;
+  z-index: 9999;
+}
+
+.heart::before, .heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  top: 0;
+  left: -10px;
+}
+
+@keyframes float {
+  to {
+    transform: translate(var(--dx), var(--dy)) rotate(720deg);
+    opacity: 0;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <h1>¡Feliz Día Mor Mio! ❤️</h1>
+  <h2>Por muchos mas recuerdos y muchas aventuras...🚗 </h2>
+  <h2>en tu compañía 🐼 </h2>
+  <div class="leyendas">
+      🐼 Momentos tiernos<br>
+      🚗 Aventuras juntos<br>
+  <i class="fas fa-plane"></i> Viajes y sueños por cumplir <br>
+  <i class="fas fa-cloud-meatball"></i> En los buenos <br>
+  <i class="fas fa-skull-crossbones"></i> en los malos momentos <br>
+  <i class="fas fa-glass-cheers"></i> Celebrando todos nuestros logros <br>
+   </div>
+  <h2>Enamorado de poder compartir contigo tantas vivencias ❤️</h2>
+  <button onclick="playMusic()">🎵 Reproducir canción</button>
+
+  <audio id="romanticSong" loop>
+    <source src="audio/mi_cancion.mp3" type="audio/mpeg">
+    Tu navegador no soporta el audio.
+  </audio>
+
+  <script>
+  function playMusic() {
+      const song = document.getElementById("romanticSong");
+      song.play();
+    }
+
+  function random(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+
+    // Posición inicial aleatoria
+    heart.style.top = random(0, 100) + "vh";
+    heart.style.left = random(0, 100) + "vw";
+
+    // Dirección aleatoria
+    const dx = random(-200, 200) + "px";
+    const dy = random(-200, 200) + "px";
+    heart.style.setProperty("--dx", dx);
+    heart.style.setProperty("--dy", dy);
+
+    // Tamaño aleatorio
+    const size = random(10, 30);
+    heart.style.width = size + "px";
+    heart.style.height = size + "px";
+    heart.style.animationDuration = random(3, 6) + "s";
+
+    document.body.appendChild(heart);
+
+    // Eliminar después de animación
+    setTimeout(() => heart.remove(), 6000);
+  }, 300);
+</script>
+
+
+  <div class="slideshow-container">
+    <img class="mySlides" src="img/foto1.jpeg" alt="Foto 1">
+    <img class="mySlides" src="img/foto2.jpeg" alt="Foto 2">
+    <img class="mySlides" src="img/foto3.jpeg" alt="Foto 3">
+    <img class="mySlides" src="img/foto4.jpeg" alt="Foto 3">
+    <img class="mySlides" src="img/foto5.jpeg" alt="Foto 3">
+  </div>
+
+  <style>
+    .slideshow-container {
+      width: 220px;
+      height: 220px;
+      position: relative;
+      margin-top: 20px;
+    }
+
+    .mySlides {
+      width: 200px;
+      height: 200px;
+      border-radius: 15px;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .mySlides.active {
+      opacity: 1;
+    }
+  </style>
+
+  <script>
+    let slideIndex = 0;
+    const slides = document.getElementsByClassName("mySlides");
+
+    function showSlides() {
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove("active");
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1 }
+      slides[slideIndex - 1].classList.add("active");
+      setTimeout(showSlides, 5000); // Cambia cada 5 segundos
+    }
+
+    showSlides();
+  </script>
+</body>
+</html>
